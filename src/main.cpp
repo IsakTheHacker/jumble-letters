@@ -6,9 +6,10 @@
 
 std::string jumbleLetters(const std::string& str) {
 	std::vector<char> vec(str.begin(), str.end());
+	size_t originalSize = vec.size();
 	std::string outputStr;
 
-	for (size_t i = 0; i < vec.size(); i++) {
+	for (size_t i = 0; i < originalSize; i++) {
 		int randomNumber = rand() % (vec.size());
 		outputStr += vec[randomNumber];
 		vec.erase(vec.begin() + randomNumber);
