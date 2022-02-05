@@ -24,7 +24,8 @@ int main (int argc, char* argv[]) {
 		std::string oldWord = std::string(argv[i], strlen(argv[i]));
 		std::string newWord = oldWord.substr(0, 1) + jumbleLetters(oldWord.substr(1, oldWord.length() - 2)) + oldWord.substr(oldWord.length() - 1, 1);
 		
-		std::cout << newWord << std::endl;
+		std::cout << newWord;
+		if (i < argc - 1) std::cout << " ";
 	}
 
 	std::cout << std::endl;
