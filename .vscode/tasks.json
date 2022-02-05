@@ -13,7 +13,7 @@
 				"${workspaceFolder}/bin/main"
 			],
 			"options": {
-				"cwd": "${workspaceFolder/bin}"
+				"cwd": "${fileDirname}"
 			},
 			"problemMatcher": [
 				"$gcc"
