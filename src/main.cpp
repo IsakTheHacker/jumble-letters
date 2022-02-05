@@ -19,10 +19,15 @@ std::string jumbleLetters(const std::string& str) {
 }
 
 int main (int argc, char* argv[]) {
-
 	for (size_t i = 1; i < argc; i++) {
 		std::string oldWord = std::string(argv[i], strlen(argv[i]));
-		std::string newWord = oldWord.substr(0, 1) + jumbleLetters(oldWord.substr(1, oldWord.length() - 2)) + oldWord.substr(oldWord.length() - 1, 1);
+
+		std::string newWord;
+		if (oldWord.length() < 4) {		//We can't jumble letters on short words, so do nothing
+			newWord = oldWord;
+		} else {
+			newWord = oldWord.substr(0, 1) + jumbleLetters(oldWord.substr(1, oldWord.length() - 2)) + oldWord.substr(oldWord.length() - 1, 1);
+		}
 		
 		std::cout << newWord;
 		if (i < argc - 1) std::cout << " ";
