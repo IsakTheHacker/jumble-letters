@@ -17,3 +17,11 @@ Now it's done! But you may want to make an alias for it so you don't need to wri
 alias jl=<path_to_jumble_letters>
 ```
 Now you can access Jumble letters by just typing `jl <sentence>`.
+
+## Usage
+The usage of Jumble letters is very simple just type the path to the program or the alias you made earlier followed by the sentence you want to mess up, as noted here:
+
+```bash
+jl <sentence>
+<path_to_jumble_letters> <sentence>
+```
