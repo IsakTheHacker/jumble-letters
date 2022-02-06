@@ -30,7 +30,7 @@ To make it a little more fun you could for example pipe the output of `jl` to `c
 ```bash
 jl <sentence> | cowsay
 ```
-Or maybe take the output from `fortune` and piping it to `jl`, then piping it to `ponysay`:
+Or maybe taking the output from `fortune` and piping it to `jl`, then piping it to `ponysay`:
 ```bash
 fortune | jl | ponysay
 ```
