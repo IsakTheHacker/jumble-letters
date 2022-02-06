@@ -16,3 +16,4 @@ Now it's done! But you may want to make an alias for it so you don't need to wri
 ```
 alias jl=<path_to_jumble_letters>
 ```
+Now you can access Jumble letters by just typing `jl <sentence>`.
