@@ -25,3 +25,12 @@ The usage of Jumble letters is very simple just type the path to the program or 
 jl <sentence>
 <path_to_jumble_letters> <sentence>
 ```
+
+To make it a little more fun you could for example pipe the output of `jl` to `cowsay`:
+```bash
+jl <sentence> | cowsay
+```
+Or maybe take the output from `fortune` and piping it to `jl`, then piping it to `ponysay`
+```bash
+fortune | jl | ponysay
+```
