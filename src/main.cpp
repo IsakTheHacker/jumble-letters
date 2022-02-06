@@ -18,9 +18,37 @@ std::string jumbleLetters(const std::string& str) {
 	return outputStr;
 }
 
+std::vector<std::string> split(std::string str, const std::string &delimiter) {
+	std::vector<std::string> tokens;
+	size_t pos = 0;
+	std::string token;
+	while ((pos = str.find(delimiter)) != std::string::npos) {
+		token = str.substr(0, pos);
+		str.erase(0, pos + delimiter.length());
+		if (token != "") {
+			tokens.push_back(token);
+		}
+	}
+	if (str != "") {
+		tokens.push_back(str);
+	}
+	return tokens;
+}
+
 int main (int argc, char* argv[]) {
-	for (size_t i = 1; i < argc; i++) {
-		std::string oldWord = std::string(argv[i], strlen(argv[i]));
+	std::vector<std::string> args(argv + 1, argv + argc);
+
+	if (args.size() < 1) {							//No arguments specified, read from stdin instead
+		std::string line;
+		while (std::getline(std::cin, line)) {		//Read from stdin
+			for (std::string word : split(line, " ")) {
+				args.push_back(word);
+			}
+		}
+	}
+
+	for (size_t i = 0; i < args.size(); i++) {
+		std::string oldWord = args[i];
 
 		std::string newWord;
 		if (oldWord.length() < 4) {		//We can't jumble letters on short words, so do nothing
@@ -30,7 +58,7 @@ int main (int argc, char* argv[]) {
 		}
 		
 		std::cout << newWord;
-		if (i < argc - 1) std::cout << " ";
+		if (i < args.size() - 1) std::cout << " ";
 	}
 
 	std::cout << std::endl;
