@@ -3,6 +3,43 @@
 #include <cstring>
 #include <iostream>
 #include <random>
+#include <array>
+#include <algorithm>
+
+std::array<char, 32> specialChars = {
+	'!',
+	'"',
+	'#',
+	'$',
+	'%',
+	'&',
+	'\'',
+	'(',
+	')',
+	'*',
+	'+',
+	',',
+	'-',
+	'.',
+	'/',
+	':',
+	';',
+	'<',
+	'=',
+	'>',
+	'?',
+	'@',
+	'[',
+	'\\',
+	']',
+	'^',
+	'_',
+	'\'',
+	'{',
+	'|',
+	'}',
+	'~'
+};
 
 std::string jumbleLetters(const std::string& str) {
 	std::vector<char> vec(str.begin(), str.end());
@@ -49,6 +86,27 @@ int main (int argc, char* argv[]) {
 
 	for (size_t i = 0; i < args.size(); i++) {
 		std::string oldWord = args[i];
+		std::string punctuationBefore = "";
+		std::string punctuationAfter = "";
+
+		for (size_t forward = 0; forward < oldWord.length(); forward++) {
+			bool specialCharExists = std::find(specialChars.begin(), specialChars.end(), oldWord[forward]) != specialChars.end();
+			if (specialCharExists) {
+				punctuationBefore = punctuationBefore + oldWord[forward];
+			} else {
+				break;
+			}
+		}
+		for (size_t backward = oldWord.length() - 1; backward > 0; backward--) {
+			bool specialCharExists = std::find(specialChars.begin(), specialChars.end(), oldWord[backward]) != specialChars.end();
+			if (specialCharExists) {
+				punctuationAfter = oldWord[backward] + punctuationAfter;
+			} else {
+				break;
+			}
+		}
+		oldWord = oldWord.substr(punctuationBefore.length(), oldWord.length() - punctuationBefore.length());
+		oldWord = oldWord.substr(0, oldWord.length() - punctuationAfter.length());
 
 		std::string newWord;
 		if (oldWord.length() < 4) {		//We can't jumble letters on short words, so do nothing
@@ -57,7 +115,7 @@ int main (int argc, char* argv[]) {
 			newWord = oldWord.substr(0, 1) + jumbleLetters(oldWord.substr(1, oldWord.length() - 2)) + oldWord.substr(oldWord.length() - 1, 1);
 		}
 		
-		std::cout << newWord;
+		std::cout << punctuationBefore << newWord << punctuationAfter;
 		if (i < args.size() - 1) std::cout << " ";
 	}
 
