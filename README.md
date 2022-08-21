@@ -1,5 +1,5 @@
 # Jumble letters
-Jumble letters is a tool that mixes up every letter in a sentence except the first and last letters in each word
+Jumble letters is a tool that mixes up every letter in a sentence except the first and last letters of each word
 
 ## Installation
 To install Jumble letters you can choose to compile it yourself (not supported yet...) or download one of our precompiled binaries
